@@ -622,12 +622,20 @@ const emailRoutes = require('./routes/emailRoutes');
 const env = require('dotenv').config();
 
 // MySQL connection
+// const db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   port: 3307,
+//   password: '',
+//   database: 'ems',
+// });
+
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  port: 3307,
-  password: '',
-  database: 'ems',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  port: process.env.DB_PORT,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
