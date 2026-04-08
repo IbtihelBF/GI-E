@@ -1,14 +1,13 @@
 const mysql = require('mysql2');
-// const app = express();
-// app.use(express.json()); // Needed to parse JSON bodies in POST/PUT requests
+require('dotenv').config(); // optional but good practice
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    port: 3307,
-    password: '',
-    database: 'ems',
-  });
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    port: process.env.DB_PORT,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+});
 
 db.connect((err) => {
     if (err) {
